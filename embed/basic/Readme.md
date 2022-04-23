@@ -1,0 +1,1 @@
+# 参考 https://soulteary.com/2022/01/16/explain-the-golang-resource-embedding-solution-go-bindata.html
