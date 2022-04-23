@@ -2,7 +2,10 @@ module dawnshi
 
 go 1.17
 
-require github.com/stretchr/testify v1.7.1
+require (
+	github.com/go-bindata/go-bindata v3.1.2+incompatible
+	github.com/stretchr/testify v1.7.1
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.0 // indirect
