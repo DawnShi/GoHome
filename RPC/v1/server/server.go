@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net"
-	"net/rpc"
+	"net/rpc/jsonrpc"
 )
 
 // HelloService is a RPC service for helloWorld
@@ -17,7 +17,8 @@ func (p *HelloService) Hello(request string, reply *string) error {
 
 func main() {
 	// 用将给客户端访问的名字和HelloService实例注册 RPC 服务
-	rpc.RegisterName("HelloService", new(HelloService))
+	// rpc.RegisterName("HelloService", new(HelloService))
+	RegisterHelloService(new(HelloService))
 
 	// HTTP 服务
 	// rpc.HandleHTTP()
@@ -36,6 +37,8 @@ func main() {
 		if err != nil {
 			log.Fatal("Accept error: ", err)
 		}
-		rpc.ServeConn(conn)
+		// rpc.ServeConn(conn)
+		// 使用 json RPC
+		go jsonrpc.ServeConn(conn)
 	}
 }
